@@ -33,16 +33,16 @@ Imagine a coesão como os tijolos e o cimento que compõem o edifício.
 Recomenda-se domínio completo dos seguintes padrões:
 
 1. Comportamental
-..1. https://www.dofactory.com/net/template-method-design-pattern 
-..2. https://www.dofactory.com/net/strategy-design-pattern
-..3. https://www.dofactory.com/net/command-design-pattern
+  1. https://www.dofactory.com/net/template-method-design-pattern 
+  2. https://www.dofactory.com/net/strategy-design-pattern
+  3. https://www.dofactory.com/net/command-design-pattern
 2. Esrutural
-..1. https://www.dofactory.com/net/facade-design-pattern 
-..2. https://www.dofactory.com/net/proxy-design-pattern
-..3. https://www.dofactory.com/net/decorator-design-pattern
+  1. https://www.dofactory.com/net/facade-design-pattern 
+  2. https://www.dofactory.com/net/proxy-design-pattern
+  3. https://www.dofactory.com/net/decorator-design-pattern
 3. Criacional
-..1. https://www.dofactory.com/net/singleton-design-pattern 
-..2. https://www.dofactory.com/net/abstract-factory-design-pattern
+  1. https://www.dofactory.com/net/singleton-design-pattern 
+  2. https://www.dofactory.com/net/abstract-factory-design-pattern
 
 Mais informações aqui: https://www.dofactory.com/net/design-patterns
 
