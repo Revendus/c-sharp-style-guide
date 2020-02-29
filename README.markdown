@@ -24,8 +24,6 @@ Ele deve ser usado **c#** mas também pode ser usado em **java**.
 - [Declarations](#declarations)
   + [Access Level Modifiers](#access-level-modifiers)
   + [Fields & Variables](#fields--variables)
-  + [Classes](#classes)
-  + [Interfaces](#interfaces)
 - [Spacing](#spacing)
   + [Indentation](#indentation)
   + [Line Length](#line-length)
@@ -112,7 +110,36 @@ public class BarcodeReadException : System.Exception
 
 ### Interfaces
 
-Interfaces devem ser escritas em **PascalCase** precedidas da letra **I**. Por exemplo `IComunicacao`. 
+Interfaces devem ser escritas em **PascalCase** precedidas da letra **I**. 
+
+
+**AVOID:**
+
+```csharp
+public interface Corpo
+{
+}
+public interface MensagemCollection
+{
+}
+public interface Agrupavel
+{
+}
+```
+
+**PREFER:**
+
+```csharp
+public interface ICorpo
+{
+}
+public interface IMensagemCollection
+{
+}
+public interface IAgrupavel
+{
+}
+```
 
 ### Methods
 
@@ -383,7 +410,65 @@ String url
 EncontrarMensagemPorId
 ```
 
+#### USe nomes tipos primitivos (C# aliases) como `int`, `float`, `string` para declaração de variáveis. Use tipos do .NET Framework como `Int32`, `Single`, `String` para acessar memebros estáticos como `Int32.TryParse` ou `String.Join`.
+
+```csharp
+// Correct
+string firstName;
+int lastIndex;
+bool isSaved;
+string commaSeparatedNames = String.Join(", ", names);
+int index = Int32.Parse(input);
+// Avoid
+String firstName;
+Int32 lastIndex;
+Boolean isSaved;
+string commaSeparatedNames = string.Join(", ", names);
+int index = int.Parse(input);
+```
+
+
+
 ## Declarations
+
+### Regras para nomes
+#### 1. Use nome significados. O exemplo a seguir usa clientesDoRio para clientes localizados no Rio:
+
+```csharp
+var clientesDoRio = from customer in customers
+  where customer.City == "Rio" 
+  select customer.Name;
+```
+
+#### 2. Nunca use abreviações Exceto para nomes comuns como Id, Xml, Ftp, Uri.
+
+```csharp    
+// Correct
+UserGroup userGroup;
+Assignment employeeAssignment;
+     
+// Avoid
+UserGroup usrGrp;
+Assignment empAssignment; 
+
+// Exceptions
+CustomerId customerId;
+XmlDocument xmlDocument;
+FtpHelper ftpHelper;
+UriPart uriPart;
+```
+
+#### 3. Use tipo implícito var para declaração local de variáveis. Exception: tipos primitivos (int, string, double, etc). 
+
+```csharp 
+var stream = File.Create(path);
+var customers = new Dictionary();
+// Exceptions
+int index = 100;
+string timeSheet;
+bool isCompleted;
+```
+
 
 ### Access Level Modifiers
 
@@ -558,7 +643,7 @@ public class Contabilidade
 }
 ```
 
-#### 11. Use substantivos e adjetivos para nomear uma classe.
+#### Use substantivos e adjetivos para nomear uma classe.
 
 1. Sempre tem que ter um substantivo
 2. Use o ajetivo conforme variação do nome
@@ -577,7 +662,7 @@ public class EmpregadoCollection
 }
 ```
 
-#### 11. Use terminações para DTOs (Data Transfer Objects)
+#### Use terminações para DTOs (Data Transfer Objects)
 
 
 ```csharp 
@@ -601,37 +686,6 @@ public class EmpregadoResponse
 }
 ```
 
-### Interfaces
-
-Todas as interfaces devem ter o prefixo com a letra **I**. 
-
-**AVOID:**
-
-```csharp
-public interface Corpo
-{
-}
-public interface MensagemCollection
-{
-}
-public interface Agrupavel
-{
-}
-```
-
-**PREFER:**
-
-```csharp
-public interface ICorpo
-{
-}
-public interface IMensagemCollection
-{
-}
-public interface IAgrupavel
-{
-}
-```
 
 ## Spacing
 
