@@ -9,12 +9,13 @@ Ele deve ser usado **c#** mas também pode ser usado em **java**.
 This style guide is based on C# and Unity conventions. 
 
 ## Table of Contents
-- [Recomendação] (#Recomendacao)
+- [Recomendação](#Recomendacao)
 - [Nomenclature](#nomenclature)
   + [Namespaces](#namespaces)
-  + [Convenção C#] (convenção--c#)
+  + [Convenção C#](convenção--c#)
   + [Nomeação](#Nomeação)
-  + [Classes & Interfaces](#classes--interfaces)
+  + [Classes](#classes)
+  + [Interfaces](#interfaces)
   + [Methods](#methods)
   + [Fields](#fields)
   + [Parameters](#parameters--parameters)
@@ -331,15 +332,15 @@ IComunicacao
 
 ## Spacing
 
-Spacing is especially important in raywenderlich.com code, as code needs to be easily readable as part of the tutorial. 
+Espaço é muito importante no código, pois seu código precisa ser legível. 
 
 ### Indentation
 
-Indentation should be done using **spaces** — never tabs.  
+Seu código precisa ser identado com **espaços** — nunca tabs.  
 
 #### Blocks
 
-Indentation for blocks uses **4 spaces** for optimal readability:
+A Indentação deve considerar  **4 espaços** para uma leitura ótima:
 
 **AVOID:**
 
@@ -361,7 +362,7 @@ for (int i = 0; i < 10; i++)
 
 #### Line Wraps
 
-Indentation for line wraps should use **4 spaces** (not the default 8):
+A quebra de linhas deve contém múltiplos **4 espaços** ou acompanhar o texto superior:
 
 **AVOID:**
 
@@ -373,29 +374,34 @@ CoolUiWidget widget =
 **PREFER:**
 
 ```csharp
-CoolUiWidget widget =
-    someIncrediblyLongExpression(that, reallyWouldNotFit, on, aSingle, line);
+var widget = someIncrediblyLongExpression(that, 
+										  reallyWouldNotFit, 
+										  on, 
+										  aSingle, 
+										  line);
 ```
 
 ### Line Length
 
-Lines should be no longer than **100** characters long.
+As linhas não devem ter mais que **80** caracteres.
 
 ### Vertical Spacing
 
-There should be exactly one blank line between methods to aid in visual clarity 
-and organization. Whitespace within methods should separate functionality, but 
-having too many sections in a method often means you should refactor into
-several methods.
+1. Deve haver exatamente uma linha vazia entre os métodos para ajudar na clareza visual
+e organização. 
 
+2. Ter um espaço em branco nos métodos para separar a funcionalidades.
+Mas cuidado em fazer muitas seções de funcionalidade num mesmo método. 
+Geralmente significa que você deve refatorar vários métodos.
 
 ## Brace Style
 
-All braces get their own line as it is a C# convention:
+As chaves devem seguir a padrão de convensão do C#:
 
 **AVOID:**
 
 ```csharp
+-- código normalmente visto em JAVA (péssimo)
 class MyClass {
     void DoSomething() {
         if (someTest) {
@@ -426,8 +432,8 @@ class MyClass
 }
 ```
 
-Conditional statements are always required to be enclosed with braces,
-irrespective of the number of lines required.
+É necessário que declarações condicionais tenham chaves também,
+independentemente do número de linhas.
 
 **AVOID:**
 
@@ -453,7 +459,7 @@ if (someTest)
 ```
 ## Switch Statements
 
-Switch-statements come with `default` case by default (heh). If the `default` case is never reached, be sure to remove it.
+As instruções do switch vêm com o CASE `default` por padrão. Para evitar situações de erros, é necessário aplicar o padrão.
 
 **AVOID:**  
   
@@ -475,78 +481,29 @@ switch (variable)
 switch (variable) 
 {
     case 1:
-        break;
-    case 2:
+        break;	
+    default:
         break;
 }
 ```
 
 ## Language
 
-Use US English spelling.
+Use o português brasileiro.
 
 **AVOID:**
-
-```csharp
-string colour = "red";
-```
-
-**PREFER:**
 
 ```csharp
 string color = "red";
 ```
 
-The exception here is `MonoBehaviour` as that's what the class is actually called.
+**PREFER:**
 
-## Copyright Statement
+```csharp
+string cor = "red";
+```
 
-The following copyright statement should be included at the top of every source file:
-
-    /*
-     * Copyright (c) 2020 Razeware LLC
-     * 
-     * Permission is hereby granted, free of charge, to any person obtaining a copy
-     * of this software and associated documentation files (the "Software"), to deal
-     * in the Software without restriction, including without limitation the rights
-     * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-     * copies of the Software, and to permit persons to whom the Software is
-     * furnished to do so, subject to the following conditions:
-     * 
-     * The above copyright notice and this permission notice shall be included in
-     * all copies or substantial portions of the Software.
-     *
-     * Notwithstanding the foregoing, you may not use, copy, modify, merge, publish, 
-     * distribute, sublicense, create a derivative work, and/or sell copies of the 
-     * Software in any work that is designed, intended, or marketed for pedagogical or 
-     * instructional purposes related to programming, coding, application development, 
-     * or information technology.  Permission for such use, copying, modification,
-     * merger, publication, distribution, sublicensing, creation of derivative works, 
-     * or sale is expressly withheld.
-     *    
-     * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-     * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-     * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-     * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-     * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-     * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-     * THE SOFTWARE.
-     */
-
-## Smiley Face
-
-Smiley faces are a very prominent style feature of the raywenderlich.com site!
-It is very important to have the correct smile signifying the immense amount of happiness and excitement for the coding topic. The closing square bracket ] is used because it represents the largest smile able to be captured using ASCII art. A closing parenthesis ("**:)**") creates a half-hearted smile, and thus is not preferred.
-
-**AVOID**:
-
-:)
-
-**PREFER**:
-
-:]  
-  
-> **NOTE**: Do not use smileys in your scripts.
+A exceção acontece para classes do framework padrão.
 
 ## Credits
 
@@ -559,4 +516,5 @@ raywenderlich.com team members:
 - [Brian Moakley](https://github.com/VegetarianZombie)
 - [Ray Wenderlich](https://github.com/rwenderlich)
 - [Eric Van de Kerckhove](https://github.com/BlackDragonBE)
+- [Eduardo Xavier](https://github.com/eduxavier)
 
