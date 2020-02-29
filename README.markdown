@@ -42,13 +42,13 @@ Toda vez que terminar um código, deve-se fazer a revisão deste guia.
 
 Evitar ao máximo nome composto.
 
-**AVOID**:
+**NÃO FAZER**:
 
 ```csharp
 RemetentesIds
 ```
 
-**PREFER**:
+**FAÇA**:
 
 ```csharp
 Ids
@@ -72,13 +72,13 @@ No geração, a nomeação deve seguir os padrões do C#.
 
 Todos os Namespaces devem estar em **PascalCase**. Não usar hífens ( - ) ou underscores ( \_ ). The exception to this rule are acronyms like GUI or HUD, which can be uppercase:
 
-**AVOID**:
+**NÃO FAZER**:
 
 ```csharp
 com.revendus.comunicacao.envio
 ```
 
-**PREFER**:
+**FAÇA**:
 
 ```csharp
 Revemdis.Comunicacao.Envio
@@ -113,7 +113,7 @@ public class BarcodeReadException : System.Exception
 Interfaces devem ser escritas em **PascalCase** precedidas da letra **I**. 
 
 
-**AVOID:**
+**NÃO FAZER:**
 
 ```csharp
 public interface Corpo
@@ -127,7 +127,7 @@ public interface Agrupavel
 }
 ```
 
-**PREFER:**
+**FAÇA:**
 
 ```csharp
 public interface ICorpo
@@ -182,13 +182,13 @@ public class MyClass
 }
 ```
 
-**AVOID:**
+**NÃO FAZER:**
 
 ```csharp
 int myPrivateVariable
 ```
 
-**PREFER:**
+**FAÇA:**
 
 ```csharp
 private int _myPrivateVariable
@@ -213,7 +213,7 @@ public int NumeroDaPagina
 }
 ```
 
-**AVOID:**
+**NÃO FAZER:**
 
 ```csharp
 private int _numeroDaPagina;
@@ -224,13 +224,13 @@ public int NumeroDaPagina
 }
 ```
 
-**PREFER 1:**
+**FAÇA 1:**
 
 ```csharp
 public int NumeroDaPagina {get; set;}
 ```
 
-**PREFER 2:**
+**FAÇA 2:**
 
 ```csharp
 private int _numeroDaPagina;
@@ -240,7 +240,7 @@ public int NumeroDaPagina
 }
 ```
 
-**PREFER 3:**
+**FAÇA 3:**
 
 ```csharp
   public int NumeroDaPagina
@@ -254,7 +254,7 @@ public int NumeroDaPagina
 
 Prametros devem ser escritos em **camelCase**.
 
-**AVOID:**
+**NÃO FAZER:**
 
 ```csharp
 void FazerAlgumaCoisa(Mensagem Mensagem)
@@ -262,14 +262,14 @@ private void CasarNaIgreja(string name, string Name)
 
 ```
 
-**PREFER 1:**
+**FAÇA 1:**
 
 ```csharp
 private void FazerAlgumaCoisa(Mensagem mensagem)
 private void CasarNaIgreja(string noivo, string noiva)
 ```
 
-**PREFER 2:**
+**FAÇA 2:**
 
 ```csharp
 public static string DefinirId(this List<ItemRecebido> itens,
@@ -287,7 +287,7 @@ public static string DefinirId(this List<ItemRecebido> itens,
 
 Defina a numeração. Não herde tipos, não faça use prefixo ou sufixo para enums.
 
-**AVOID:**
+**NÃO FAZER:**
 
 ```csharp
 public enum Color
@@ -325,7 +325,7 @@ public enum DockingsFlags
 }
 ```
 
-**PREFER 1:**
+**FAÇA 1:**
 
 ```csharp
 public enum Dockings
@@ -394,7 +394,7 @@ public class BarcodeReadEventArgs : System.EventArgs
 
 No código, siglas devem ser tratadas como palavras. Por exemplo:
 
-**AVOID:**
+**NÃO FAZER:**
 
 ```csharp
 XMLHTTPRequest
@@ -402,7 +402,7 @@ String URL
 EncontrarMensagemPorID
 ```  
 
-**PREFER:**
+**FAÇA:**
 
 ```csharp
 XmlHttpRequest
@@ -419,7 +419,7 @@ int lastIndex;
 bool isSaved;
 string commaSeparatedNames = String.Join(", ", names);
 int index = Int32.Parse(input);
-// Avoid
+// NÃO FAZER
 String firstName;
 Int32 lastIndex;
 Boolean isSaved;
@@ -447,7 +447,7 @@ var clientesDoRio = from customer in customers
 UserGroup userGroup;
 Assignment employeeAssignment;
      
-// Avoid
+// NÃO FAZER
 UserGroup usrGrp;
 Assignment empAssignment; 
 
@@ -493,13 +493,13 @@ namespace Revendus.Erp.PageController
 
 Prefira declarações em múltiplas linhas, com base em comentário.
 
-**AVOID:**
+**NÃO FAZER:**
 
 ```csharp
 private string username, twitterHandle;
 ```
 
-**PREFER 1:**
+**FAÇA 1:**
 
 ```csharp
         /// <summary>
@@ -519,7 +519,7 @@ private string username, twitterHandle;
         private string _twitterHandle;
 ```
 
-**PREFER 2:**
+**FAÇA 2:**
 
 ```csharp
          #region variáveis para lidar com o twitter
@@ -573,7 +573,7 @@ public class UserLog
 ```csharp
 // Correct
 public const string ShippingType = "DropShip";
-// Avoid
+// NÃO FAZER
 public const string SHIPPINGTYPE = "DropShip";
 ```
 Exceção para variáveis estáticas.
@@ -699,7 +699,7 @@ Seu código precisa ser identado com **espaços** — nunca tabs.
 
 A Indentação deve considerar  **4 espaços** para uma leitura ótima:
 
-**AVOID:**
+**NÃO FAZER:**
 
 ```csharp
 for (int i = 0; i < 10; i++) 
@@ -708,7 +708,7 @@ for (int i = 0; i < 10; i++)
 }
 ```
 
-**PREFER:**
+**FAÇA:**
 
 ```csharp
 for (int i = 0; i < 10; i++) 
@@ -721,14 +721,14 @@ for (int i = 0; i < 10; i++)
 
 A quebra de linhas deve contém múltiplos **4 espaços** ou acompanhar o texto superior:
 
-**AVOID:**
+**NÃO FAZER:**
 
 ```csharp
 CoolUiWidget widget =
         someIncrediblyLongExpression(that, reallyWouldNotFit, on, aSingle, line);
 ```
 
-**PREFER:**
+**FAÇA:**
 
 ```csharp
 var widget = someIncrediblyLongExpression(that, 
@@ -755,7 +755,7 @@ Geralmente significa que você deve refatorar vários métodos.
 
 As chaves devem seguir a padrão de convensão do C#:
 
-**AVOID:**
+**NÃO FAZER:**
 
 ```csharp
 -- código normalmente visto em JAVA (péssimo)
@@ -770,7 +770,7 @@ class MyClass {
 }
 ```
 
-**PREFER:**
+**FAÇA:**
 
 ```csharp
 class MyClass
@@ -792,7 +792,7 @@ class MyClass
 É necessário que declarações condicionais tenham chaves também,
 independentemente do número de linhas.
 
-**AVOID:**
+**NÃO FAZER:**
 
 ```csharp
 if (someTest)
@@ -801,7 +801,7 @@ if (someTest)
 if (someTest) doSomethingElse();
 ```
 
-**PREFER:**
+**FAÇA:**
 
 ```csharp
 if (someTest) 
@@ -818,7 +818,7 @@ if (someTest)
 
 As instruções do switch vêm com o CASE `default` por padrão. Para evitar situações de erros, é necessário aplicar o padrão.
 
-**AVOID:**  
+**NÃO FAZER:**  
   
 ```csharp
 switch (variable) 
@@ -832,7 +832,7 @@ switch (variable)
 }
 ```
 
-**PREFER:**  
+**FAÇA:**  
   
 ```csharp
 switch (variable) 
@@ -848,13 +848,13 @@ switch (variable)
 
 Use o português brasileiro.
 
-**AVOID:**
+**NÃO FAZER:**
 
 ```csharp
 string color = "red";
 ```
 
-**PREFER:**
+**FAÇA:**
 
 ```csharp
 string cor = "red";
