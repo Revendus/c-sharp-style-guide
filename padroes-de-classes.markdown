@@ -1,10 +1,37 @@
 # Classes e Design Patterns
-Consideramos que se uma classe tiver um limite máximo de linhas, o desenvolvimento do módulo se obriga a aplicar padrões.
-Para nós, 50 linhas é suficiente para comportar algorítimo e documentações. Se for necessário aumentar essa quantidade de linhas, então será preciso aplicar principios de acoplamento, coerencia e design pattern.
-É muito comum se estudar orientação objetos, saber o que são classes, interfaces, métodos, níveis de acesso mas na prática, poucos sabem aplicar no dia a dia. 
-Primeiro, é preciso se familiralizar com Design Patterns, principalmente se você entende vagamente e no sabe de cabeça o que usar e quando usar. Estudo todos os padrões se atentando as diferentes categorias **Creational, Structural e Behavioral**  
+É muito comum se estudar orientação objetos, saber as definições de classes, interfaces, métodos, níveis de acesso, mas é um pouco difícil aplicar no dia a dia. 
 
-Para entender a estrutura atual ou mesmo criar seguindo nosso padrão, recomenda-se  domínio completo dos seguintes padrões:
+Aqui, nós consideramos que se o desenvolvedor trabalhar com algumas limitações, ele vai se obrigar a aplicar algum padrão. Por exemplo, se uma classe tiver um limite máximo de linhas, o desenvolvimento do módulo se obriga a aplicar padrões de projeto. 
+
+Em nosso style guide, o limite é de 50 linhas é suficiente para uma classe comportar algoritmo e suas documentações / comentários.  A media que se torna necessário aumentar essa quantidade de linhas, o desenvolvedor se obrigado a aplicar princípios de acoplamento, coerência e padrões de projeto (clássicos e o nosso) para organizar a classe, tanto de forma física ou lógica.
+
+# Técnicas Básicas
+
+## Regras de Ouro
+
+**Regra de Ouro** 
+Seu código deve ser claro como uma redação. Inspirado como uma poesia. A prática da comunicação é importante. Pois se você fala ou escreve mal sobre qualquer assunto. Teu código vai ser ruim também. 
+
+**Regra de Ouro Branco** 
+Você não escreve pra você. Você escreve para os outros!
+Será que alguém vai entender o que eu fiz? Será que esse nome expressa o que quero dizer? Essas perguntas são autocríticas e nos forçam a revisar o que estamos fazendo.
+
+**Regra de Ouro Rose**
+Não interessa a linguagem de programação. Engenharia de software é o mais importante!
+
+## Coesão e acoplamento
+
+**Coerência** é definida como a qualidade de ser lógico, consistente e capaz 
+de ser entendido. Imagine a coerência como um edifício.
+
+**Coesão** por outro lado, refere-se ao ato de formar uma unidade inteira. 
+É efetivamente um subconjunto de coerência. 
+Imagine a coesão como os tijolos e o cimento que compõem o edifício.
+
+## Design Patterns Tradicionais e obrigatórios
+
+Recomenda-se domínio completo dos seguintes padrões:
+
 1. Comportamental
 ..1. https://www.dofactory.com/net/template-method-design-pattern 
 ..2. https://www.dofactory.com/net/strategy-design-pattern
@@ -27,8 +54,11 @@ Mais informações aqui: https://www.dofactory.com/net/design-patterns
 5. Decore esses 9 padrões de novo.
 6. Decore esses 9 padrões mais uma vez.
 
+## Design Patterns Mash-up (partial)
 
-Por exemplo, dividir os arquivos em grupos:
+Organizar sua lógica em arquivos físicos diferentes podem ajudar seu código a ficar mais manutenível.
+
+Por exemplo, dividir uma class Core, que está no arquivo Core.cs em sub grupos seguindo o exemplo a seguir:
 1. Core.cs
 2. Core.Grupo1.cs
 3. Core.Grupo2.cs
