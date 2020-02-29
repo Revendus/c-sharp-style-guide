@@ -1,19 +1,19 @@
-﻿# The Official raywenderlich.com C# Style Guide
+﻿# The Official revendus.com.br C# Style Guide
 
-This style guide is different from others you may find, because the focus is
-centered on readability for print and the web. We created this style guide to
-keep the code in our tutorials consistent.  
+Este style guide foca em leitura de código, simplicidade e consistência.
 
-Our overarching goals are **conciseness**, **readability** and **simplicity**. Also, this guide is written to keep **Unity** in mind. 
+Ele deve ser usado **c#** mas também pode ser usado em **java**. 
 
 ## Inspiration
 
 This style guide is based on C# and Unity conventions. 
 
 ## Table of Contents
-
+- [Recomendação] (#Recomendação)
 - [Nomenclature](#nomenclature)
   + [Namespaces](#namespaces)
+  + [Convenção C#] (convenção--c#)
+  + [Nomeação](#Nomeação)
   + [Classes & Interfaces](#classes--interfaces)
   + [Methods](#methods)
   + [Fields](#fields)
@@ -37,101 +37,176 @@ This style guide is based on C# and Unity conventions.
 - [Smiley Face](#smiley-face)
 - [Credit](#credits)
 
+## Recomendação
+Toda vez que terminar um código, deve-se fazer a revisão deste guia.
 
 ## Nomenclature
+No geração, a nomeação deve seguir os padrões do C#.
 
-On the whole, naming should follow C# standards.
+### Convenção C#
+- [C# Coding Conventions](https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/inside-a-program/coding-conventions)
+- [C# Style Guide](https://github.com/raywenderlich/c-sharp-style-guide)
+- [C# Coding Standards and Naming Conventions](http://www.dofactory.com/reference/csharp-coding-standards)
 
-### Namespaces
 
-Namespaces are all **PascalCase**, multiple words concatenated together, without hyphens ( - ) or underscores ( \_ ). The exception to this rule are acronyms like GUI or HUD, which can be uppercase:
+### Nomeação
+
+Evitar ao máximo nome composto.
 
 **AVOID**:
 
 ```csharp
-com.raywenderlich.fpsgame.hud.healthbar
+RemetentesIds
 ```
 
 **PREFER**:
 
 ```csharp
-RayWenderlich.FPSGame.HUD.Healthbar
+Ids
+```
+ou
+```csharp
+RemetentesId
+```
+### Namespaces
+
+Todos os Namespaces devem estar em **PascalCase**. Não usar hífens ( - ) ou underscores ( \_ ). The exception to this rule are acronyms like GUI or HUD, which can be uppercase:
+
+**AVOID**:
+
+```csharp
+com.revendus.comunicacao.envio
 ```
 
-### Classes & Interfaces
+**PREFER**:
 
-Classes and interfaces are written in **PascalCase**. For example `RadialSlider`. 
+```csharp
+Revemdis.Comunicacao.Envio
+```
+
+### Classes
+
+Classes devem ser escritas em **PascalCase**. Por exemplo `Comunicacao`. 
+
+### Interfaces
+
+Interfaces devem ser escritas em **PascalCase** precedidas da letra **I**. Por exemplo `IComunicacao`. 
 
 ### Methods
 
-Methods are written in **PascalCase**. For example `DoSomething()`. 
+Métodos devem ser escritos em **PascalCase**. Por Exemplo `FazerAlgumaCoisa()`. 
 
 ### Fields
 
-All non-static fields are written **camelCase**. Per Unity convention, this includes **public fields** as well.
-
-For example:
+Exemplo:
 
 ```csharp
 public class MyClass 
 {
-    public int publicField;
-    int packagePrivate;
-    private int myPrivate;
-    protected int myProtected;
+    public int PublicField {get; set;};
+    private int _myPrivate;
+    protected int _myProtected;
 }
 ```
 
 **AVOID:**
+
+```csharp
+int myPrivateVariable
+```
+
+**PREFER:**
 
 ```csharp
 private int _myPrivateVariable
 ```
 
-**PREFER:**
+Static fields são exceção é devem ser escritos em **_UPPERCASE**:
 
 ```csharp
-private int myPrivateVariable
-```
-
-Static fields are the exception and should be written in **PascalCase**:
-
-```csharp
-public static int TheAnswer = 42;
+public static int _VALOR_PROMOCIONAL_BASE = 42;
 ```
 ### Properties
 
-All properties are written in **PascalCase**. For example:
+Todas as propriedades devem ser escritas em **PascalCase**. Por exemplo:
 
 ```csharp
-public int PageNumber 
+private int _numeroDaPagina;
+public int NumeroDaPagina 
 {
-    get { return pageNumber; }
-    set { pageNumber = value; }
+    get { return _numeroDaPagina; }
+    set { _numeroDaPagina = value; }
 }
 ```
-
-### Parameters
-
-Parameters are written in **camelCase**.
 
 **AVOID:**
 
 ```csharp
-void DoSomething(Vector3 Location)
+private int _numeroDaPagina;
+public int NumeroDaPagina 
+{
+    get { return _numeroDaPagina; }
+    set { _numeroDaPagina = value; }
+}
 ```
 
-**PREFER:**
+**PREFER 1:**
 
 ```csharp
-void DoSomething(Vector3 location)
+public int NumeroDaPagina {get; set;}
 ```
 
-Single character values are to be avoided except for temporary looping variables.
+**PREFER 2:**
+
+```csharp
+private int _numeroDaPagina;
+public int NumeroDaPagina 
+{
+    get { return _numeroDaPagina; } 
+}
+```
+
+**PREFER 3:**
+
+```csharp
+  public int NumeroDaPagina
+  {
+      get;
+      private set;
+  }
+```
+
+### Parameters
+
+Prametros devem ser escritos em **camelCase**.
+
+**AVOID:**
+
+```csharp
+void FazerAlgumaCoisa(Mensagem Mensagem)
+```
+
+**PREFER 1:**
+
+```csharp
+private void FazerAlgumaCoisa(Mensagem mensagem)
+```
+
+**PREFER 2:**
+
+```csharp
+public static string DefinirId(this List<ItemRecebido> itens,
+                               Action<StringBuilder, ItemRecebido> acaoItem)
+{
+        
+}
+```
+
+Uso de apenas um caracter, singuarlmente, devem ser evitados a menos que estejam numa variável de loop temporário.
 
 ### Actions
 
-Actions are written in **PascalCase**. For example:
+Actions devem ser escritos em **PascalCase**. Por exemplo:
 
 ```csharp
 public event Action<int> ValueChanged;
@@ -139,14 +214,14 @@ public event Action<int> ValueChanged;
 
 ### Misc
 
-In code, acronyms should be treated as words. For example:
+No código, siglas devem ser tratadas como palavras. Por exemplo:
 
 **AVOID:**
 
 ```csharp
 XMLHTTPRequest
 String URL
-findPostByID
+EncontrarMensagemPorID
 ```  
 
 **PREFER:**
@@ -154,35 +229,250 @@ findPostByID
 ```csharp
 XmlHttpRequest
 String url
-findPostById
+EncontrarMensagemPorId
 ```
 
 ## Declarations
 
 ### Access Level Modifiers
 
-Access level modifiers should be explicitly defined for classes, methods and member variables.
+Todos os modificadores de nível de acesso devem ser definios de forma explícida para classes, métodos, propriedades e variáveis.
+
+Exemplo:
+
+```csharp
+namespace Revendus.Erp.PageController
+{
+  internal class MyClass 
+  {
+      public int PublicField {get; set;};
+      private int _myPrivate;
+      protected int _myProtected;
+  }
+}
+
+```
 
 ### Fields & Variables
 
-Prefer single declaration per line.
+Prefira declarações em múltiplas linhas, com base em comentário.
 
 **AVOID:**
 
 ```csharp
-string username, twitterHandle;
+private string username, twitterHandle;
 ```
 
-**PREFER:**
+**PREFER 1:**
 
 ```csharp
-string username;
-string twitterHandle;
+        /// <summary>
+        /// Contém informações do usuário
+        /// </summary>
+        /// <remarks>
+        /// Nível de classe porque preciso usar multiplas vezes
+        /// </remarks>
+        private string _username;
+        /// <summary>
+        /// Contém informaçõe do twitter
+        /// </summary>
+        /// <remarks>
+        /// Definida pelo construtor, não muda, é usada em para referenciar
+        /// informações do twitter para salvar no banco, validar, etc.
+        /// </remarks>
+        private string _twitterHandle;
+```
+
+**PREFER 2:**
+
+```csharp
+         #region variáveis para lidar com o twitter
+        /// <summary>
+        /// Contém informações do usuário
+        /// </summary>
+        /// <remarks>
+        /// Nível de classe porque preciso usar multiplas vezes
+        /// </remarks>
+        private string _username;
+        /// <summary>
+        /// Contém informaçõe do twitter
+        /// </summary>
+        /// <remarks>
+        /// Definida pelo construtor, não muda, é usada em para referenciar
+        /// informações do twitter para salvar no banco, validar, etc.
+        /// </remarks>
+        private string _twitterHandle;
+        #endregion
 ```
 
 ### Classes
 
-Exactly one class per source file, although inner classes are encouraged where scoping appropriate.
+1. Uma classe por arquivo.
+2. Classe não deve ter mais de 50 linhas.
+3. Usar inner classes somente quando o escopo for aprorieado.
+4. No caso da classe precisar ter mais de 50 linhas, utilizar **partial**
+
+**Como construir classes**
+O ideal é que sua classe não tenha mais de 50 linhas. Se houver necessidade, significa que você está dando muita responsabildaide para ela. Dessa forma, há duas maneiras elegantes de trabalhar nessa situação. Uma é usar um **padrão comportamental de design pattern** outra, é organizar tua lógica inflada de responsabilidade em arquivos físicos diferentes, através da organização de **partial classes**.
+
+### Classes e Design Patterns
+Primeiro, é preciso se familiralizar com Design Patterns, principalmente se você entende vagamente e no sabe de cabeça o que usar e quando usar. Estudo todos os padrões se atentando as diferentes categorias **Creational, Structural e Behavioral**  
+
+Para entender a estrutura atual ou mesmo criar seguindo nosso padrão, recomenda-se  domínio completo dos seguintes padrões:
+1. Comportamental
+⋅⋅1. https://www.dofactory.com/net/template-method-design-pattern 
+⋅⋅2. https://www.dofactory.com/net/strategy-design-pattern
+⋅⋅3. https://www.dofactory.com/net/command-design-pattern
+2. Esrutural
+⋅⋅1. https://www.dofactory.com/net/facade-design-pattern 
+⋅⋅2. https://www.dofactory.com/net/proxy-design-pattern
+⋅⋅3. https://www.dofactory.com/net/decorator-design-pattern
+3. Criacional
+⋅⋅1. https://www.dofactory.com/net/singleton-design-pattern 
+⋅⋅2. https://www.dofactory.com/net/abstract-factory-design-pattern
+
+Mais informações aqui: https://www.dofactory.com/net/design-patterns
+
+**Orientação geral**
+1. Decore esses 9 padrões.
+2. Tenha domínio dos padrões na ordem de categoria (Comportamental, Estrutual e criacional)
+3. Não se preocupe em criar seu algorítimo aplicando o padrão primeiro. Faça seu algorítimo primeiro, depois aplique o padrão. Com o tempo você vai usar os padrões de forma tácita e fará a medida que for concluindo seu desenvolvimento.
+4. Decore esses 9 padrões.
+5. Decore esses 9 padrões de novo.
+6. Decore esses 9 padrões mais uma vez.
+
+
+Por exemplo, dividir os arquivos em grupos:
+1. Core.cs
+2. Core.Grupo1.cs
+3. Core.Grupo2.cs
+
+**Core.cs**
+```csharp
+using System.Collections.Generic;
+using System.Linq;
+
+namespace Revendus.Core.Processo.Mensagem.Enviar
+{
+    /// <summary>
+    /// Objetivo da classe, bem curto.
+    /// </summary>
+    /// <remarks>
+    /// linha 1 de documentação
+    /// linha 2 de documentação
+    /// linha 3 de documentação
+    /// linha 4 de documentação
+    /// linha 5 de documentação
+    /// </remarks>
+    public partial class Core
+    {
+        #region construtor
+        private readonly IController _controller;
+        private Data.Remetente _remetente;
+
+        public Data.Remetente Remetente
+        {
+            get { return _remetente; }
+        }
+        public Core(IController controller)
+        {
+            _controller = controller;
+        }
+
+        public Core()
+            : this(new Controller())
+        {
+
+        }
+        #endregion
+      
+       
+        public void Executar()
+        {
+            FazerPasso1();
+            if (FazerPasso2())
+            {
+                FazerPasso3();
+                FazerPasso4();
+            }           
+        }
+    }
+}
+
+```
+**Core.Grupo1.cs**
+No arquivo físico Core.Grupo1.cs terá os métodos com responsabilidades similares:
+
+```csharp
+using System.Collections.Generic;
+using System.Linq;
+
+namespace Revendus.Core.Processo.Mensagem.Enviar
+{
+    public partial class Core
+    {
+        /// <summary>
+        /// Objetivo do FazerPasso1, bem curto. Posi o nome do método deve se explicar sozinho
+        /// </summary>
+        /// <remarks>
+        /// linha 1 de documentação
+        /// linha 2 de documentação
+        /// </remarks>
+        public void FazerPasso1()
+        {
+                    
+        }
+        /// <summary>
+        /// Objetivo do FazerPasso2, bem curto. Posi o nome do método deve se explicar sozinho
+        /// </summary>
+        /// <remarks>
+        /// linha 1 de documentação
+        /// linha 2 de documentação
+        /// </remarks>
+        public void FazerPasso2()
+        {
+                    
+        }
+    }
+}
+```
+
+**Core.Grupo2.cs**
+No arquivo físico Core.Grupo1.cs terá os métodos com responsabilidades similares:
+
+```csharp
+using System.Collections.Generic;
+using System.Linq;
+
+namespace Revendus.Core.Processo.Mensagem.Enviar
+{
+    public partial class Core
+    {
+        /// <summary>
+        /// Objetivo do FazerPasso4, bem curto. Posi o nome do método deve se explicar sozinho
+        /// </summary>
+        /// <remarks>
+        /// linha 1 de documentação
+        /// linha 2 de documentação
+        /// </remarks>
+        public void FazerPasso3()
+        {
+                    
+        }
+        /// <summary>
+        /// Objetivo do FazerPasso4, bem curto. Posi o nome do método deve se explicar sozinho
+        /// </summary>
+        /// <remarks>
+        /// linha 1 de documentação
+        /// linha 2 de documentação
+        /// </remarks>
+        public void FazerPasso4()
+        {
+                    
+        }
+    }
+}
+
 
 ### Interfaces
 
