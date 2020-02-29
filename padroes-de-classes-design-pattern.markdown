@@ -1,7 +1,5 @@
+
 # Classes e Design Patterns
-Consideramos que se uma classe tiver um limite máximo de linhas, o desenvolvimento do módulo se obriga a aplicar padrões.
-Para nós, 50 linhas é suficiente para comportar algorítimo e documentações. Se for necessário aumentar essa quantidade de linhas, então será preciso aplicar principios de acoplamento, coerencia e design pattern.
-É muito comum se estudar orientação objetos, saber o que são classes, interfaces, métodos, níveis de acesso mas na prática, poucos sabem aplicar no dia a dia. 
 Primeiro, é preciso se familiralizar com Design Patterns, principalmente se você entende vagamente e no sabe de cabeça o que usar e quando usar. Estudo todos os padrões se atentando as diferentes categorias **Creational, Structural e Behavioral**  
 
 Para entender a estrutura atual ou mesmo criar seguindo nosso padrão, recomenda-se  domínio completo dos seguintes padrões:
