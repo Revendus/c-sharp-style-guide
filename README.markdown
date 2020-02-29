@@ -1,26 +1,25 @@
-﻿# The Official revendus.com.br C# Style Guide
+﻿# Guia oficial do C# / Java Style Guide do revendus.com.br
 
 Este style guide foca em leitura de código, simplicidade e consistência.
 
 Ele deve ser usado **c#** mas também pode ser usado em **java**. 
 
-## Inspiration
-
-This style guide is based on C# and Unity conventions. 
 
 ## Table of Contents
-- [Recomendação](#Recomendacao)
+- [Recomendação](#recomenda%C3%A7%C3%A3o)
+- [Nomeação](#Nomeação)
 - [Nomenclature](#nomenclature)
   + [Namespaces](#namespaces)
   + [Convenção C#](convenção--c#)
-  + [Nomeação](#Nomeação)
   + [Classes](#classes)
+  + [Exception](#exception)
   + [Interfaces](#interfaces)
   + [Methods](#methods)
   + [Fields](#fields)
   + [Parameters](#parameters--parameters)
   + [Delegates](#delegates--delegates)
   + [Events](#events--events)
+  + [Enums](#enums)
   + [Misc](#misc)
 - [Declarations](#declarations)
   + [Access Level Modifiers](#access-level-modifiers)
@@ -41,15 +40,6 @@ This style guide is based on C# and Unity conventions.
 ## Recomendação
 Toda vez que terminar um código, deve-se fazer a revisão deste guia.
 
-## Nomenclature
-No geração, a nomeação deve seguir os padrões do C#.
-
-### Convenção C#
-- [C# Coding Conventions](https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/inside-a-program/coding-conventions)
-- [C# Style Guide](https://github.com/raywenderlich/c-sharp-style-guide)
-- [C# Coding Standards and Naming Conventions](http://www.dofactory.com/reference/csharp-coding-standards)
-
-
 ### Nomeação
 
 Evitar ao máximo nome composto.
@@ -69,6 +59,17 @@ ou
 ```csharp
 RemetentesId
 ```
+
+## Nomenclature
+No geração, a nomeação deve seguir os padrões do C#.
+
+### Convenção C#
+- [C# Coding Conventions](https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/inside-a-program/coding-conventions)
+- [C# Style Guide](https://github.com/raywenderlich/c-sharp-style-guide)
+- [C# Coding Standards and Naming Conventions](http://www.dofactory.com/reference/csharp-coding-standards)
+
+
+
 ### Namespaces
 
 Todos os Namespaces devem estar em **PascalCase**. Não usar hífens ( - ) ou underscores ( \_ ). The exception to this rule are acronyms like GUI or HUD, which can be uppercase:
@@ -85,9 +86,29 @@ com.revendus.comunicacao.envio
 Revemdis.Comunicacao.Envio
 ```
 
-### Classes
+Organize os namespaces numa estrutura clara e definida, que represente o módulo.
+```csharp 
+// Examples
+namespace Revendus.Erp.Processo.Area.MeuProcessoEspecifico
+{
+}
+namespace Revendus.Erp.Processo.Area.MeuProcessoEspecifico.Extensoes
+{
+}
+```
 
-Classes devem ser escritas em **PascalCase**. Por exemplo `Comunicacao`. 
+
+
+### Exception
+
+Use o sufixo Exception na criação de novas classes que são exceptions.
+
+Exemplo:
+```csharp 
+public class BarcodeReadException : System.Exception
+{
+}
+```
 
 ### Interfaces
 
@@ -97,6 +118,30 @@ Interfaces devem ser escritas em **PascalCase** precedidas da letra **I**. Por e
 
 Métodos devem ser escritos em **PascalCase**. Por Exemplo `FazerAlgumaCoisa()`. 
 
+Exemplo:
+
+```csharp
+public class ClientActivity
+{
+  public void ClearStatistics()
+  {
+    //...
+  }
+  public void CalculateStatistics()
+  {
+    //...
+  }
+}
+```
+
+Use dois parametros com nome **sender** e **letra e** no event handler. O sender é o parametro que representa o objeto que disparou o evento.
+
+```csharp
+public void ReadBarcodeEventHandler(object sender, ReadBarcodeEventArgs e)
+{
+  //...
+}
+```
 ### Fields
 
 Exemplo:
@@ -127,6 +172,7 @@ Static fields são exceção é devem ser escritos em **_UPPERCASE**:
 ```csharp
 public static int _VALOR_PROMOCIONAL_BASE = 42;
 ```
+
 ### Properties
 
 Todas as propriedades devem ser escritas em **PascalCase**. Por exemplo:
@@ -185,12 +231,15 @@ Prametros devem ser escritos em **camelCase**.
 
 ```csharp
 void FazerAlgumaCoisa(Mensagem Mensagem)
+private void CasarNaIgreja(string name, string Name)
+
 ```
 
 **PREFER 1:**
 
 ```csharp
 private void FazerAlgumaCoisa(Mensagem mensagem)
+private void CasarNaIgreja(string noivo, string noiva)
 ```
 
 **PREFER 2:**
@@ -203,6 +252,90 @@ public static string DefinirId(this List<ItemRecebido> itens,
 }
 ```
 
+### Delegates
+
+### Events
+
+### Enums
+
+Defina a numeração. Não herde tipos, não faça use prefixo ou sufixo para enums.
+
+**AVOID:**
+
+```csharp
+public enum Color
+{
+  Red,
+  Green,
+  Blue,
+  Yellow,
+  Magenta,
+  Cyan
+} 
+public enum Direction : long
+{
+  North = 1,
+  East = 2,
+  South = 3,
+  West = 4
+} 
+public enum CoinEnum
+{
+  Penny,
+  Nickel,
+  Dime,
+  Quarter,
+  Dollar
+} 
+[Flags]
+public enum DockingsFlags
+{
+  None = 0,
+  Top = 1,
+  Right = 2, 
+  Bottom = 4,
+  Left = 8
+}
+```
+
+**PREFER 1:**
+
+```csharp
+public enum Dockings
+{
+  None = 0,
+  Top = 1,
+  Right = 2, 
+  Bottom = 4,
+  Left = 8
+}
+public enum Direction 
+{
+  North = 1,
+  East = 2,
+  South = 3,
+  West = 4
+} 
+public enum Coin
+{
+  Penny,
+  Nickel,
+  Dime,
+  Quarter,
+  Dollar
+}
+[Flags]
+public enum Dockings
+{
+  None = 0,
+  Top = 1,
+  Right = 2, 
+  Bottom = 4,
+  Left = 8
+}
+```
+
+
 Uso de apenas um caracter, singuarlmente, devem ser evitados a menos que estejam numa variável de loop temporário.
 
 ### Actions
@@ -211,6 +344,23 @@ Actions devem ser escritos em **PascalCase**. Por exemplo:
 
 ```csharp
 public event Action<int> ValueChanged;
+```
+
+### Delegates
+
+```csharp 
+public delegate void ReadBarcodeDelegate(object sender, ReadBarcodeEventArgs e);
+```
+
+### EventArgs
+
+Use sufixo EventArgs na criação de novas casses:
+
+```csharp 
+// Correct
+public class BarcodeReadEventArgs : System.EventArgs
+{
+}
 ```
 
 ### Misc
@@ -306,13 +456,150 @@ private string username, twitterHandle;
         #endregion
 ```
 
+#### Não use tipos de identificação em nomes de variáveis
+
+```csharp
+// correto
+int counter;
+string name;
+    
+// Incorreto
+int iCounter;
+string strName;
+
+
+```
+
+#### Usar camelCasing para argumentos e variáveis locais
+
+```csharp
+public class UserLog
+{
+  public void Add(LogEvent logEvent)
+  {
+    int itemCount = logEvent.Items.Count;
+    // ...
+  }
+}
+```
+
+#### Não usar CAPS para constantes e variáveis readonly:
+
+```csharp
+// Correct
+public const string ShippingType = "DropShip";
+// Avoid
+public const string SHIPPINGTYPE = "DropShip";
+```
+Exceção para variáveis estáticas.
+
+
+
 ### Classes
 
+Classes devem ser escritas em **PascalCase**. Por exemplo `Comunicacao`. 
+
+Exemplo:
+
+```csharp
+public class ClientActivity
+{
+  public void ClearStatistics()
+  {
+    //...
+  }
+  public void CalculateStatistics()
+  {
+    //...
+  }
+}
+```
+
+**Regras**
 1. Uma classe por arquivo.
 2. Classe não deve ter mais de 50 linhas.
 3. Usar inner classes somente quando o escopo for aprorieado.
 4. No caso da classe precisar ter mais de 50 linhas, utilizar **design pattern** ou **partial classes**
 5. [Usar os padrões de classes](padroes-de-classes.markdown)
+
+#### Nome da classe tem que acompanhar o nome do arquivo. Exceção: arquivos com classes partial que refletem o propósito do arquivo fonte. Exemplo: designer, generated, extensão, etc. 
+
+```csharp 
+// Located in Task.cs
+public partial class Task
+{
+}
+// Located in Task.generated.cs
+public partial class Task
+{
+}
+```
+
+#### Declare todos os membros no tipo da classe. Variáveis estáticas no topo de tudo:
+
+```csharp 
+// Correct
+public class Contabilidade
+{
+  public static string _OBJECT_NAME;
+  public static decimal _SQL_CONSULTA_ESPECIFICA;
+  private int _quantidade;
+  
+  public string Numero { get; set; }
+  public DateTime Abertura { get; set; }
+  public DateTime Fechamento { get; set; }
+  public decimal Balanco { get; set; }
+  
+  // Constructor
+  public Contabilidade()
+  {
+    // ...
+  }
+}
+```
+
+#### 11. Use substantivos e adjetivos para nomear uma classe.
+
+1. Sempre tem que ter um substantivo
+2. Use o ajetivo conforme variação do nome
+
+(Referência de Substantivo)[https://www.todamateria.com.br/substantivos/]
+
+```csharp 
+public class Empregado
+{
+}
+public class EmpregadoClt
+{
+}
+public class EmpregadoCollection
+{
+}
+```
+
+#### 11. Use terminações para DTOs (Data Transfer Objects)
+
+
+```csharp 
+public class EmpregadoDto
+{
+ //para Data Transfer Objects, representando uma consulta SQL ou LINQ TO SQL
+}
+public class EmpregadoView
+{
+//para Data Transfer Objects com função de visualização na UI
+}
+public class EmpregadoRequest
+{
+//para Data Transfer Objects de requisção entre endpoints diferentes
+//UI chamando um service (web, Rest, componente)
+}
+public class EmpregadoResponse
+{
+//para Data Transfer Objects de requisção entre endpoints diferentes
+//Um service (web, Rest, componente) retornando uma mensagem ao consumidor
+}
+```
 
 ### Interfaces
 
@@ -321,13 +608,29 @@ Todas as interfaces devem ter o prefixo com a letra **I**.
 **AVOID:**
 
 ```csharp
-Comunicacao
+public interface Corpo
+{
+}
+public interface MensagemCollection
+{
+}
+public interface Agrupavel
+{
+}
 ```
 
 **PREFER:**
 
 ```csharp
-IComunicacao
+public interface ICorpo
+{
+}
+public interface IMensagemCollection
+{
+}
+public interface IAgrupavel
+{
+}
 ```
 
 ## Spacing
