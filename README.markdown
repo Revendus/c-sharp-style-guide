@@ -732,10 +732,10 @@ CoolUiWidget widget =
 
 ```csharp
 var widget = someIncrediblyLongExpression(that, 
-										  reallyWouldNotFit, 
-										  on, 
-										  aSingle, 
-										  line);
+                                          reallyWouldNotFit, 
+                                          on, 
+                                          aSingle, 
+                                          line);
 ```
 
 ### Line Length
