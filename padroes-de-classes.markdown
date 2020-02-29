@@ -1,3 +1,10 @@
+- [Classes e Design Patterns] (#classes-e-design-patterns)
+- [Técnicas Básicas] (#t%C3%A9cnicas-b%C3%A1sicas)
+  + [Regras de Ouro] (#regras-de-ouro)
+  + [Coesão e Acoplamento] (#coes%C3%A3o-e-acoplamento)
+  + [Design Patterns Tradicionais e obrigatórios] (#design-patterns-tradicionais-e-obrigat%C3%B3rios)
+  + [Design Pattern - Mash-up - Partial] (#design-patterns-mash-up-partial)
+
 # Classes e Design Patterns
 É muito comum se estudar orientação objetos, saber as definições de classes, interfaces, métodos, níveis de acesso, mas é um pouco difícil aplicar no dia a dia. 
 
@@ -32,15 +39,15 @@ Imagine a coesão como os tijolos e o cimento que compõem o edifício.
 
 Recomenda-se domínio completo dos seguintes padrões:
 
-1. Comportamental
+### Design pattern comportamental
   1. https://www.dofactory.com/net/template-method-design-pattern 
   2. https://www.dofactory.com/net/strategy-design-pattern
   3. https://www.dofactory.com/net/command-design-pattern
-2. Esrutural
+### Design pattern esrutural
   1. https://www.dofactory.com/net/facade-design-pattern 
   2. https://www.dofactory.com/net/proxy-design-pattern
   3. https://www.dofactory.com/net/decorator-design-pattern
-3. Criacional
+## Design pattern criacional
   1. https://www.dofactory.com/net/singleton-design-pattern 
   2. https://www.dofactory.com/net/abstract-factory-design-pattern
 
