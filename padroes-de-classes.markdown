@@ -1,16 +1,17 @@
-- [Classes e Design Patterns] (#classes-e-design-patterns)
-- [Técnicas Básicas] (#t%C3%A9cnicas-b%C3%A1sicas)
-  + [Regras de Ouro] (#regras-de-ouro)
-  + [Coesão e Acoplamento] (#coes%C3%A3o-e-acoplamento)
-  + [Design Patterns Tradicionais e obrigatórios] (#design-patterns-tradicionais-e-obrigat%C3%B3rios)
-  + [Design Pattern - Mash-up - Partial] (#design-patterns-mash-up-partial)
-
 # Classes e Design Patterns
 É muito comum se estudar orientação objetos, saber as definições de classes, interfaces, métodos, níveis de acesso, mas é um pouco difícil aplicar no dia a dia. 
 
 Aqui, nós consideramos que se o desenvolvedor trabalhar com algumas limitações, ele vai se obrigar a aplicar algum padrão. Por exemplo, se uma classe tiver um limite máximo de linhas, o desenvolvimento do módulo se obriga a aplicar padrões de projeto. 
 
 Em nosso style guide, o limite é de 50 linhas é suficiente para uma classe comportar algoritmo e suas documentações / comentários.  A media que se torna necessário aumentar essa quantidade de linhas, o desenvolvedor se obrigado a aplicar princípios de acoplamento, coerência e padrões de projeto (clássicos e o nosso) para organizar a classe, tanto de forma física ou lógica.
+
+## Conteúdo
+- [Classes e Design Patterns](#classes--e--design--patterns)
+- [Técnicas Básicas](#t%C3%A9cnicas-b%C3%A1sicas)
+  + [Regras de Ouro](#regras-de-ouro)
+  + [Coesão e Acoplamento](#coes%C3%A3o-e-acoplamento)
+  + [Design Patterns Tradicionais e obrigatórios](#design-patterns-tradicionais-e-obrigat%C3%B3rios)
+  + [Design Pattern - Mash-up - Partial](#design-patterns-mash-up-partial)
 
 # Técnicas Básicas
 
